@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+</head>
+<body>   
+    <input list="songs" placeholder="Start typing...">    
+    <datalist id="songs">
+    </datalist>
+
+    <p></p>
+
+<script>
+    var dataList = document.getElementById('songs');
+    const para = document.querySelector('p');
+
+    var jsonOptionss = [{
+        "id": "02qipBA2wn8c9r7aLdX9bY",
+        "title": "Robinson",
+        "author": "Roberto Vecchioni",
+        "contributor": "Fottoli"
+    }, {
+        "id": "38paDDziQ57k1f4VfKTeGk",
+        "title": "California Stars",
+        "author": "multiple",
+        "contributor": "Claudia"
+    }];
+    
+    var jsonOptions;
+
+    const getData = async () => {
+        const response = await fetch("songs.json");
+        const data = await response.json();
+        jsonOptions = data;
+        return data;
+    };
+
+    (async () => {
+        await getData();
+        console.log(jsonOptions);
+            // Loop over the JSON array.
+        jsonOptions.forEach(function(item) {
+        var option = document.createElement('option');
+        
+        option.value = item.contributor;
+        option.text = item.title;
+        
+        dataList.appendChild(option);
+        });
+    })();
+
+
+</script>
+
+</body>
+</html>
