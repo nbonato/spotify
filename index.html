@@ -7,7 +7,8 @@
     <title>Testing</title>
 </head>
 <body>   
-    <input list="songs" placeholder="Start...">    
+    <h1>Madre mia, ma chi ha messo sta cagata?</h1>
+    <input list="songs" placeholder="Scopriamolo!">    
     <datalist id="songs">
     </datalist>
 
@@ -19,18 +20,6 @@
     const input = document.querySelector("input");
     var titles = [];
 
-    var jsonOptionss = [{
-        "id": "02qipBA2wn8c9r7aLdX9bY",
-        "title": "Robinson",
-        "author": "Roberto Vecchioni",
-        "contributor": "Fottoli"
-    }, {
-        "id": "38paDDziQ57k1f4VfKTeGk",
-        "title": "California Stars",
-        "author": "multiple",
-        "contributor": "Claudia"
-    }];
-    
     var jsonOptions;
 
     const getData = async () => {
