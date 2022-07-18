@@ -14,14 +14,25 @@
         <datalist id="songs">
         </datalist>
     </form>
+    <div class="general">
+        <img>
+        <div class="info">
+            <h2 id="title"></h2>
+            <h2 id="author"></h2>
+            <p></p>
+            <h2 id="contributor"></h2>
+        </div>
+    </div>
     
-
-    <p></p>
 
 <script>
     var dataList = document.getElementById('songs');
     const para = document.querySelector('p');
     const input = document.getElementById("input-box");
+    const picture = document.querySelector("img");
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const contributor = document.getElementById("contributor");
     var titles = [];
 
     var jsonOptions;
@@ -34,7 +45,8 @@
     };
     function clearInput() {
             document.getElementById("song-form").reset();
-            para.textContent = "";
+            contributor.textContent = picture.src = para.textContent = title.textContent = author.textContent = picture.src = "";
+
          }
     (async () => {
         await getData();
@@ -47,6 +59,7 @@
             option.id = item.id;
             option.dataset.author = item.author;
             option.dataset.contributor = item.contributor;
+            option.dataset.cover = item.cover;
             dataList.appendChild(option);
 
         });
@@ -55,8 +68,11 @@
                 var option = Array.prototype.find.call(input.list.options, function(option) {
                     return option.value === input.value;
                 });
-                let contributor = option.getAttribute('data-contributor');
-                para.textContent = `La canzone è stata inserita da ${contributor}`;
+                picture.src = option.getAttribute("data-cover");
+                title.textContent = input.value;
+                author.textContent = option.getAttribute("data-author");
+                para.textContent = "La canzone è stata inserita da:";
+                contributor.textContent = option.getAttribute('data-contributor');
                 console.log(document.querySelector("option").value);
             }
         })

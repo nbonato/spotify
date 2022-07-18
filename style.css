@@ -6,12 +6,12 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #4d4d4d;
+    background-color: #121212;
 }
 input {
     font-size: 2em;
     margin: auto;
-    color: #4d4d4d;
+    color: #121212;
 }
 
 form {
@@ -36,4 +36,32 @@ form {
 #reset-button:active {
     background-color: #169c46;
 
+}
+
+div {
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+p {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+#author {
+    color: #6a6a6a;
+}
+
+img {
+    height: 150px;
+    border-radius: 50%;
 }
