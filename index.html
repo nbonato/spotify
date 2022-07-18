@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="fonts/fonts.css">
     <title>Testing</title>
 </head>
 <body>   
     <h1>Madre mia, ma chi ha messo sta cagata?</h1>
-    <input list="songs" placeholder="Scopriamolo!">    
+    <input onfocus="this.value=''" onchange="this.blur();" list="songs" placeholder="Scopriamolo!">    
     <datalist id="songs">
     </datalist>
 
