@@ -43,12 +43,23 @@
         console.log(jsonOptions);
             // Loop over the JSON array.
         jsonOptions.forEach(function(item) {
-        var option = document.createElement('option');
-        
-        option.value = item.contributor;
-        option.text = item.title;
-        
-        dataList.appendChild(option);
+            var option = document.createElement('option');
+            
+            option.value = item.contributor;
+            option.text = item.title;
+            option.dataset.contributor = item.contributor;
+            dataList.appendChild(option);
+
+
+            input.addEventListener("input", () => {
+            if (titles.includes(input.value)) {
+                    var option = Array.prototype.find.call(input.list.options, function(option) {
+                        return option.value === input.value;
+                    });
+                para.textContent = option.getAttribute("data-contributor");
+                console.log(document.querySelector("option").value);
+            }
+            })
         });
     })();
 
