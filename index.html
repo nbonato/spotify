@@ -10,7 +10,7 @@
     <h1>Madre mia, ma chi ha messo 'sta cagata?</h1>
     <form id="song-form">
         <input id="input-box" list="songs" placeholder="Scopriamolo!"> 
-        <input type="button" onclick="newFunction()" value="Reset">
+        <input id="reset-button" type="button" onclick="clearInput()" value="Reset">
         <datalist id="songs">
         </datalist>
     </form>
@@ -32,7 +32,7 @@
         jsonOptions = data;
         return data;
     };
-    function newFunction() {
+    function clearInput() {
             document.getElementById("song-form").reset();
             para.textContent = "";
          }
