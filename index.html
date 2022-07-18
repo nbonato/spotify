@@ -8,16 +8,20 @@
 </head>
 <body>   
     <h1>Madre mia, ma chi ha messo 'sta cagata?</h1>
-    <input onfocus="this.value=''" onchange="this.blur();" list="songs" placeholder="Scopriamolo!">    
-    <datalist id="songs">
-    </datalist>
+    <form id="song-form">
+        <input id="input-box" list="songs" placeholder="Scopriamolo!"> 
+        <input type="button" onclick="newFunction()" value="Reset">
+        <datalist id="songs">
+        </datalist>
+    </form>
+    
 
     <p></p>
 
 <script>
     var dataList = document.getElementById('songs');
     const para = document.querySelector('p');
-    const input = document.querySelector("input");
+    const input = document.getElementById("input-box");
     var titles = [];
 
     var jsonOptions;
@@ -28,7 +32,10 @@
         jsonOptions = data;
         return data;
     };
-
+    function newFunction() {
+            document.getElementById("song-form").reset();
+            para.textContent = "";
+         }
     (async () => {
         await getData();
         console.log(jsonOptions);
@@ -48,7 +55,8 @@
                 var option = Array.prototype.find.call(input.list.options, function(option) {
                     return option.value === input.value;
                 });
-                para.textContent = option.getAttribute("data-contributor");
+                let contributor = option.getAttribute('data-contributor');
+                para.textContent = `La canzone è stata inserita da ${contributor}`;
                 console.log(document.querySelector("option").value);
             }
         })
