@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
 
-    <title>Document</title>
+    <title>Testing</title>
 </head>
 <body>   
-    <input list="songs" placeholder="Start typing...">    
+    <input list="songs" placeholder="Start...">    
     <datalist id="songs">
     </datalist>
 
@@ -46,24 +46,24 @@
             // Loop over the JSON array.
         jsonOptions.forEach(function(item) {
             var option = document.createElement('option');
-            
+            titles.push(item.title);
             option.value = item.title;
             option.id = item.id;
             option.dataset.author = item.author;
             option.dataset.contributor = item.contributor;
             dataList.appendChild(option);
 
-
-            input.addEventListener("input", () => {
-            if (titles.includes(input.value)) {
-                    var option = Array.prototype.find.call(input.list.options, function(option) {
-                        return option.value === input.value;
-                    });
+        });
+        input.addEventListener("input", () => {
+            if (titles.includes(input.value)) {                
+                var option = Array.prototype.find.call(input.list.options, function(option) {
+                    return option.value === input.value;
+                });
                 para.textContent = option.getAttribute("data-contributor");
                 console.log(document.querySelector("option").value);
             }
-            })
-        });
+        })
+        
     })();
 
 
