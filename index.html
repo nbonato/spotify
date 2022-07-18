@@ -47,8 +47,9 @@
         jsonOptions.forEach(function(item) {
             var option = document.createElement('option');
             
-            option.value = item.contributor;
-            option.text = item.title;
+            option.value = item.title;
+            option.id = item.id;
+            option.dataset.author = item.author;
             option.dataset.contributor = item.contributor;
             dataList.appendChild(option);
 
