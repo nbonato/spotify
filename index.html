@@ -10,9 +10,9 @@
     <h1>Madre mia, ma chi ha messo 'sta cagata?</h1>
     <form id="song-form">
         <input id="input-box" list="songs" placeholder="Scopriamolo!"> 
-        <input id="reset-button" type="button" onclick="clearInput()" value="Reset">
         <datalist id="songs">
         </datalist>
+        <input id="reset-button" type="button" onclick="clearInput()" value="Reset">
     </form>
     <div class="general">
         <img>
@@ -50,7 +50,6 @@
          }
     (async () => {
         await getData();
-        console.log(jsonOptions);
             // Loop over the JSON array.
         jsonOptions.forEach(function(item) {
             var option = document.createElement('option');
@@ -73,7 +72,6 @@
                 author.textContent = option.getAttribute("data-author");
                 para.textContent = "La canzone è stata inserita da:";
                 contributor.textContent = option.getAttribute('data-contributor');
-                console.log(document.querySelector("option").value);
             }
         })
         
