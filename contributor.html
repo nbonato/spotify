@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2>
+    <ul id="list"></ul>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const contributorName = urlParams.get('contributor');
+        const headerCounter = document.querySelector("h2");
+        let counter = 0;
+
+        const getData = async () => {
+            const response = await fetch("songs.json");
+            const data = await response.json();
+            jsonOptions = data;
+            return data;
+        };
+        (async () => {
+            await getData();
+            // Loop over the JSON array.
+            let ul = document.getElementById("list");
+            jsonOptions.forEach(function(item) {
+                if (item.contributor === contributorName) {
+                    let li = document.createElement("li");
+                    li.appendChild(document.createTextNode(item.title));
+                    ul.appendChild(li);
+                    counter += 1;
+                }
+                let option = document.createElement('option');
+                option.value = item.title;
+                option.id = item.id;
+                option.dataset.author = item.author;
+                option.dataset.contributor = item.contributor;
+                option.dataset.cover = item.cover;
+                
+            }); 
+            headerCounter.textContent = contributorName + " ha aggiunto " + counter + " canzoni.";          
+        })();
+        
+    </script>
+</body>
+</html>

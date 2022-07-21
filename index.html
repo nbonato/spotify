@@ -20,22 +20,22 @@
             <h2 id="title"></h2>
             <h2 id="author"></h2>
             <p></p>
-            <h2 id="contributor"></h2>
+            <h2><a href="contributor.html?contributor=" id="contributor"></a></h2>
         </div>
     </div>
     
 
 <script>
-    var dataList = document.getElementById('songs');
+    let dataList = document.getElementById('songs');
     const para = document.querySelector('p');
     const input = document.getElementById("input-box");
     const picture = document.querySelector("img");
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const contributor = document.getElementById("contributor");
-    var titles = [];
+    let titles = [];
 
-    var jsonOptions;
+    let jsonOptions;
 
     const getData = async () => {
         const response = await fetch("songs.json");
@@ -50,9 +50,9 @@
          }
     (async () => {
         await getData();
-            // Loop over the JSON array.
+        // Loop over the JSON array.
         jsonOptions.forEach(function(item) {
-            var option = document.createElement('option');
+            let option = document.createElement('option');
             titles.push(item.title);
             option.value = item.title;
             option.id = item.id;
@@ -64,7 +64,7 @@
         });
         input.addEventListener("input", () => {
             if (titles.includes(input.value)) {                
-                var option = Array.prototype.find.call(input.list.options, function(option) {
+                let option = Array.prototype.find.call(input.list.options, function(option) {
                     return option.value === input.value;
                 });
                 picture.src = option.getAttribute("data-cover");
@@ -72,6 +72,7 @@
                 author.textContent = option.getAttribute("data-author");
                 para.textContent = "La canzone è stata inserita da:";
                 contributor.textContent = option.getAttribute('data-contributor');
+                contributor.href = "contributor.html?contributor=" + option.getAttribute('data-contributor');
             }
         })
         
