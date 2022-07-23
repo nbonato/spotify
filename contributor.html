@@ -34,14 +34,7 @@
                     li.appendChild(document.createTextNode(item.title));
                     ul.appendChild(li);
                     counter += 1;
-                }
-                let option = document.createElement('option');
-                option.value = item.title;
-                option.id = item.id;
-                option.dataset.author = item.author;
-                option.dataset.contributor = item.contributor;
-                option.dataset.cover = item.cover;
-                
+                }                
             }); 
             headerCounter.textContent = contributorName + " ha aggiunto " + counter + " canzoni.";          
         })();
