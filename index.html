@@ -18,7 +18,7 @@
         <img>
         <div class="info">
             <h2 id="title"></h2>
-            <h2 id="author"></h2>
+            <h2><a href="author.html?author=" id="author"></a></h2>
             <p></p>
             <h2><a href="contributor.html?contributor=" id="contributor"></a></h2>
         </div>
@@ -73,6 +73,7 @@
                 para.textContent = "La canzone è stata inserita da:";
                 contributor.textContent = option.getAttribute('data-contributor');
                 contributor.href = "contributor.html?contributor=" + option.getAttribute('data-contributor');
+                author.href =  "author.html?author=" + option.getAttribute('data-author');
             }
         })
         

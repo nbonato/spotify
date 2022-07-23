@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h2></h2>
+    <button><a href="index.html">Torna indietro</a></button>
+    <ul id="list"></ul>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const authorName = urlParams.get('author');
+        const headerCounter = document.querySelector("h2");
+        let counter = 0;
+
+        document.title = authorName + " - Canzoni";
+        const getData = async () => {
+            const response = await fetch("songs.json");
+            const data = await response.json();
+            jsonOptions = data;
+            return data;
+        };
+        (async () => {
+            await getData();
+            // Loop over the JSON array.
+            let ul = document.getElementById("list");
+            jsonOptions.forEach(function(item) {
+                if (item.author === authorName) {
+                    let li = document.createElement("li");
+                    li.appendChild(document.createTextNode(item.title));
+                    ul.appendChild(li);
+                    counter += 1;
+                }                
+            }); 
+            headerCounter.textContent = "Ci sono " + counter + " canzoni di " + authorName;          
+        })();
+        
+    </script>
+</body>
+</html>
