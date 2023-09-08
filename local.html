@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Local</title>
+</head>
+<body>   
+    <input list="songs" placeholder="Start typing...">    
+        <datalist id="songs">
+        </datalist>
+
+    <p></p>
+
+<script>
+    var dataList = document.getElementById('songs');
+    const para = document.querySelector('p');
+    const input = document.querySelector("input");
+
+    var jsonOptions = [{
+        "id": "02qipBA2wn8c9r7aLdX9bY",
+        "title": "Robinson",
+        "author": "Roberto Vecchioni",
+        "contributor": "Fottoli"
+    }, {
+        "id": "38paDDziQ57k1f4VfKTeGk",
+        "title": "California Stars",
+        "author": "multiple",
+        "contributor": "Claudia"
+    }];
+    
+    const jsonData= require('./songs.json'); 
+    console.log(jsonData);
+    var titles = [];
+    jsonOptions.forEach(function(item) {
+        var option = document.createElement('option');
+        titles.push(item.title);
+        option.value = item.title;
+        option.id = item.id;
+        option.dataset.author = item.author;
+        option.dataset.contributor = item.contributor;
+        dataList.appendChild(option);
+    });
+
+    input.addEventListener("input", () => {
+        if (titles.includes(input.value)) {
+                var option = Array.prototype.find.call(input.list.options, function(option) {
+                    return option.value === input.value;
+                });
+            para.textContent = option.getAttribute("data-contributor");
+            console.log(document.querySelector("option").value);
+        }
+    })
+    
+
+</script>
+
+</body>
+</html>
