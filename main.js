@@ -42,7 +42,7 @@ function clearInput() {
             picture.src = option.getAttribute("data-cover");
             title.textContent = input.value;
             author.textContent = option.getAttribute("data-author");
-            para.textContent = "La canzone è stata inserita da:";
+            para.textContent = "The song was added by:";
             contributor.textContent = option.getAttribute('data-contributor');
             contributor.href = "contributor.html?contributor=" + option.getAttribute('data-contributor');
             author.href =  "author.html?author=" + option.getAttribute('data-author');
@@ -50,4 +50,3 @@ function clearInput() {
     })
     
 })();
-
